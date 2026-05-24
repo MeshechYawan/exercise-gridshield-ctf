@@ -1,0 +1,13 @@
+generated/
+logs/
+dist/*.zip
+*.tar.gz
+*.7z
+*.pcap
+*.pcapng
+*.vmem
+*.core
+__pycache__/
+.pytest_cache/
+.DS_Store
+Thumbs.db

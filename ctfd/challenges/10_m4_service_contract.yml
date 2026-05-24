@@ -1,0 +1,16 @@
+name: "Gridshield 10 - M4 Service Contract"
+author: "Exercise Gridshield"
+category: "Forensics"
+description: |
+  Recover and decrypt the fictional service contract using the wallet-derived
+  password logic from the workstation notes.
+value: 100
+type: standard
+flags:
+  - CTF{CASE_CLOSED_CONTRACT_RECOVERED_MD5_WALLET}
+tags:
+  - file-carving
+  - md5
+  - pdf
+state: visible
+version: "1.0"

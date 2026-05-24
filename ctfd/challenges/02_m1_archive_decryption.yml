@@ -1,0 +1,16 @@
+name: "Gridshield 02 - M1 Archive Decryption"
+author: "Exercise Gridshield"
+category: "Crypto"
+description: |
+  Use the passphrase recovered from memory to decrypt the ransomware archive
+  preserved by first responders.
+value: 100
+type: standard
+flags:
+  - CTF{VICTIM_ARCHIVE_DECRYPTED_EP009}
+tags:
+  - openssl
+  - ransomware
+  - evidence-recovery
+state: visible
+version: "1.0"

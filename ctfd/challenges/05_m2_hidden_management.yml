@@ -1,0 +1,14 @@
+name: "Gridshield 05 - M2 Hidden Management"
+author: "Exercise Gridshield"
+category: "Web"
+description: |
+  Discover the hidden management surface on the C2 web panel.
+value: 100
+type: standard
+flags:
+  - CTF{DIRB_FOUND_SECURE_MGMT_AND_DB_ADMIN}
+tags:
+  - web-enumeration
+  - content-discovery
+state: visible
+version: "1.0"

@@ -1,0 +1,16 @@
+name: "Gridshield 09 - M4 Operator Identity Record"
+author: "Exercise Gridshield"
+category: "Forensics"
+description: |
+  Recover and decrypt the fictional operator identity record from the
+  workstation backup image.
+value: 100
+type: standard
+flags:
+  - CTF{CASE_CLOSED_OPERATOR_ID_RECOVERED}
+tags:
+  - file-carving
+  - pdf
+  - qpdf
+state: visible
+version: "1.0"

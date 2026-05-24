@@ -1,0 +1,15 @@
+name: "Gridshield 04 - M2 Operations ZIP"
+author: "Exercise Gridshield"
+category: "Password Cracking"
+description: |
+  Recover the reused operations password from the protected C2 archive.
+value: 100
+type: standard
+flags:
+  - CTF{ZIP_UNLOCKED_CPANEL_HIDDEN_SECURE_MGMT}
+tags:
+  - john
+  - zip
+  - password-reuse
+state: visible
+version: "1.0"

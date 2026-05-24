@@ -1,0 +1,15 @@
+name: "Gridshield 08 - M3 Operator Profile"
+author: "Exercise Gridshield"
+category: "Crypto"
+description: |
+  Recover the encrypted operator profile and use it to reach the workstation.
+value: 100
+type: standard
+flags:
+  - CTF{OVPN_CONFIG_DEVUSER_DEV_KEY_INFRADEV99}
+tags:
+  - openssl
+  - password-cracking
+  - ssh
+state: visible
+version: "1.0"

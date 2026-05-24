@@ -1,0 +1,15 @@
+name: "Gridshield 03 - M1 Persistence"
+author: "Exercise Gridshield"
+category: "Incident Response"
+description: |
+  Confirm how the suspicious endpoint activity survived restart.
+value: 100
+type: standard
+flags:
+  - CTF{PERSISTENCE_SYSTEMD_WUPDATE_SERVICE}
+tags:
+  - linux
+  - persistence
+  - systemd
+state: visible
+version: "1.0"

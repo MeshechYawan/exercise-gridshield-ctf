@@ -1,0 +1,116 @@
+services:
+  dns:
+    build: ../src/dns
+    container_name: gridshield_dns
+    networks:
+      internal:
+        ipv4_address: 10.1.1.1
+    restart: unless-stopped
+
+  m1:
+    build: ../src/m1
+    image: gridshield/m1:public
+    container_name: gridshield_m1
+    hostname: cbfs01
+    cap_add: [NET_RAW, NET_ADMIN, SYS_PTRACE]
+    security_opt:
+      - seccomp:unconfined
+    ports:
+      - "2221:22"
+    volumes:
+      - ../generated/m1/evidence:/evidence
+      - ../generated/m1/cache:/tmp/.cache
+    networks:
+      internal:
+        ipv4_address: 10.1.1.5
+      c2_public:
+        ipv4_address: 198.51.100.5
+    dns: 10.1.1.1
+    depends_on: [m2, dns]
+    restart: unless-stopped
+
+  m2:
+    build: ../src/m2
+    image: gridshield/m2:public
+    container_name: gridshield_m2
+    ports:
+      - "8080:80"
+      - "2083:2083"
+      - "2121:21"
+      - "30000-30009:30000-30009"
+    volumes:
+      - ../generated/m2/ftp:/srv/ftp
+      - ../generated/m2/internal:/internal
+    networks:
+      internal:
+        ipv4_address: 10.1.1.20
+        aliases:
+          - novasec.gridshield.local
+      c2_public:
+        ipv4_address: 198.51.100.20
+    restart: unless-stopped
+
+  m3:
+    build: ../src/m3
+    image: gridshield/m3:public
+    container_name: gridshield_m3
+    ports:
+      - "2223:22"
+    volumes:
+      - ../generated/m3/ssh/authorized_keys:/seed/authorized_keys:ro
+      - ../generated/m3/ssh/dev_key:/seed/dev_key:ro
+      - ../generated/m3/log/openvpn.log:/seed/openvpn.log:ro
+      - ../generated/m3/log/auth.log:/seed/auth.log:ro
+      - ../generated/m3/openvpn/config.hash:/seed/config.hash:ro
+      - ../generated/m3/openvpn/passphrase_candidates.txt:/seed/passphrase_candidates.txt:ro
+      - ../generated/m3/openvpn/clients/operator.ovpn.enc:/seed/operator.ovpn.enc:ro
+      - ../generated/m3/support/README_RELAY_SUPPORT.md:/seed/README_RELAY_SUPPORT.md:ro
+      - ../generated/m3/support/incident_notes:/seed/incident_notes:ro
+    networks:
+      internal:
+        ipv4_address: 10.1.1.10
+      relay_public:
+        ipv4_address: 192.0.2.10
+    restart: unless-stopped
+
+  m4:
+    build: ../src/m4
+    image: gridshield/m4:public
+    container_name: gridshield_m4
+    ports:
+      - "2224:22"
+    volumes:
+      - ../generated/m4/home/devuser:/seed_home:ro
+    networks:
+      internal:
+        ipv4_address: 10.1.1.15
+      workstation_public:
+        ipv4_address: 198.18.45.23
+    restart: unless-stopped
+
+networks:
+  internal:
+    name: gridshield_internal
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.1.1.0/24
+          gateway: 10.1.1.254
+  c2_public:
+    name: gridshield_c2_public
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 198.51.100.0/24
+  relay_public:
+    name: gridshield_relay_public
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.0.2.0/24
+  workstation_public:
+    name: gridshield_workstation_public
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 198.18.0.0/15

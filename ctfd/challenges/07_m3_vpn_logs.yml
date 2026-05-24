@@ -1,0 +1,15 @@
+name: "Gridshield 07 - M3 VPN Logs"
+author: "Exercise Gridshield"
+category: "Forensics"
+description: |
+  Review the VPN relay evidence and identify the exposed workstation address.
+value: 100
+type: standard
+flags:
+  - CTF{VPN_DROPOUT_REAL_IP_198_18_45_23_EXPOSED}
+tags:
+  - logs
+  - vpn
+  - incident-response
+state: visible
+version: "1.0"

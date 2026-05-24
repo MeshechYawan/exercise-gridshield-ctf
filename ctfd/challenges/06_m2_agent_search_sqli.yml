@@ -1,0 +1,15 @@
+name: "Gridshield 06 - M2 Agent Search SQLi"
+author: "Exercise Gridshield"
+category: "Web"
+description: |
+  Use the compromised management panel to recover the next infrastructure lead.
+value: 100
+type: standard
+flags:
+  - CTF{SQLI_AGENT_ACTIVITY_DUMP_EP009}
+tags:
+  - sqli
+  - sqlite
+  - web
+state: visible
+version: "1.0"

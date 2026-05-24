@@ -1,0 +1,7 @@
+[Unit]
+Description=Windows Update Compatibility Helper
+[Service]
+ExecStart=/usr/bin/wupdate
+# CTF{PERSISTENCE_SYSTEMD_WUPDATE_SERVICE}
+[Install]
+WantedBy=multi-user.target

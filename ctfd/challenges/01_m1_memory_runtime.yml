@@ -1,0 +1,17 @@
+name: "Gridshield 01 - M1 Memory Runtime"
+author: "Exercise Gridshield"
+category: "Forensics"
+description: |
+  First responders preserved a full memory image from cbfs01.
+  Recover the suspicious runtime configuration from memory.
+value: 100
+type: standard
+connection_info: "Start with M1 SSH on localhost port 2221 and the /evidence folder."
+flags:
+  - CTF{SCRIPT_RECOVERED_RUNTIME_CREDS_NOT_HARDCODED}
+tags:
+  - memory
+  - volatility
+  - incident-response
+state: visible
+version: "1.0"
