@@ -89,7 +89,6 @@ End_files/        public-safe final evidence generation notes
 
 ## Public Safety Notes
 
-- No real identity photo, national ID, or contract PDF is included.
 - Final PDFs are generated as fictional synthetic training documents.
 - Event-specific VPN material and private deployment keys are not included.
 - CTFd files are optional and are not required to run the challenge locally.
